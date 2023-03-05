@@ -1,13 +1,6 @@
-FROM python:3
-
-WORKDIR /usr/src/app
-
-COPY requirements.txt .
-
-RUN pip install -r requirements.txt
-
+FROM python
+WORKDIR /app
 COPY hello.py .
-
-EXPOSE 5000
-
-CMD python hello.py
+COPY start-app.sh .
+RUN pip install Flask
+CMD ["/bin/bask","start-app.sh"]
